@@ -33,6 +33,10 @@ import ScrollToTop from './animation/ScrollToTop';
 import SAPPage from './pages/Technology/SapPage';
 import VLSIPage from './pages/Technology/VLSIPage';
 import MortgageServicesPage from './pages/Services/MortgageServicesPage';
+import RevenueCycle from './pages/Healthcare/RevenueCycle';
+import CodingHealth from './pages/Healthcare/CodingHealth';
+import ClaimsManagement from './pages/Healthcare/ClaimsManagement';
+import MemberManagement from './pages/Healthcare/MemberManagement';
 
 function App() {
   return (
@@ -75,6 +79,10 @@ function App() {
        <Route path='/sap' element={<SAPPage/>}/>
        <Route path='/vlsi' element={<VLSIPage/>}/>
        <Route path='/mortgage-services' element={<MortgageServicesPage/>}/>
+       <Route path='/revenue-cycle-management' element={<RevenueCycle/>}/>
+       <Route path='/coding-health-information' element={<CodingHealth/>}/>
+       <Route path='/claims-management' element={<ClaimsManagement/>}/>
+       <Route path='/member-management' element={<MemberManagement/>}/>
        </Routes> 
         <Footer/>       
         </Router>

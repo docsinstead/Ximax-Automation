@@ -51,7 +51,16 @@ const Header = () => {
     ],
     'Industry Verticals': [
       { name: 'Financial Services', href: '/financial' },
-      { name: 'Healthcare Solutions', href: '/healthcare' },
+      { 
+        name: 'Healthcare Solutions', 
+        href: '/healthcare',
+        submenu: [
+          { name: 'Revenue Cycle Management', href: '/revenue-cycle-management' },
+          { name: 'Coding / Health Information', href: '/coding-health-information' },
+          { name: 'Claims Management', href: '/claims-management' },
+          { name: 'Member Management', href: '/member-management' }
+        ]
+      },
       { name: 'E-commerce', href: '/ecommerce' },
       { name: 'Manufacturing', href: '/manufacturing' },
       { name: 'Telecommunication', href: '/telecommunication' },
@@ -145,7 +154,11 @@ const Header = () => {
                 <div 
                   key={link.name} 
                   className="relative" 
-                  onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.name)} 
+                  onMouseEnter={() => {
+                    if (link.hasDropdown) {
+                      handleMouseEnter(link.name);
+                    }
+                  }} 
                   onMouseLeave={handleMouseLeave}
                 >
                   <button
@@ -164,17 +177,37 @@ const Header = () => {
                       onMouseEnter={handleDropdownMouseEnter}
                       onMouseLeave={handleDropdownMouseLeave}
                     >
-                      {dropdowns[link.name as keyof typeof dropdowns]?.map((item) => (
-                        <button
-                          key={item.name}
-                          onClick={() => handleNavigation(item.href)}
-                          className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-600 transition-colors"
-                        >
-                          <div className="flex items-center gap-3">
-                            <ChevronRight className="w-4 h-4 text-sky-500" />
-                            <span className="font-medium">{item.name}</span>
+                      {dropdowns[link.name as keyof typeof dropdowns]?.map((item: any) => (
+                        item.submenu ? (
+                          <div key={item.name} className="relative group">
+                            <div className="flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-600 transition-colors">
+                              <span className="font-medium">{item.name}</span>
+                              <ChevronRight className="w-4 h-4 text-sky-500" />
+                            </div>
+                            <div className="absolute left-full top-0 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 hidden group-hover:block">
+                              {item.submenu.map((subItem: any) => (
+                                <button
+                                  key={subItem.name}
+                                  onClick={() => handleNavigation(subItem.href)}
+                                  className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-600 transition-colors"
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <ChevronRight className="w-3 h-3 text-sky-500" />
+                                    <span className="font-medium">{subItem.name}</span>
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
                           </div>
-                        </button>
+                        ) : (
+                          <button
+                            key={item.name}
+                            onClick={() => handleNavigation(item.href)}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-600 transition-colors"
+                          >
+                            <span className="font-medium">{item.name}</span>
+                          </button>
+                        )
                       ))}
                     </div>
                   )}
@@ -237,17 +270,43 @@ const Header = () => {
                         
                         {activeDropdown === link.name && (
                           <div className="bg-gray-50 py-2">
-                            {dropdowns[link.name as keyof typeof dropdowns]?.map((item) => (
-                              <button
-                                key={item.name}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleNavigation(item.href);
-                                }}
-                                className="block w-full text-left py-3 px-10 text-gray-600 hover:text-sky-600 border-l-2 border-transparent hover:border-sky-500"
-                              >
-                                {item.name}
-                              </button>
+                            {dropdowns[link.name as keyof typeof dropdowns]?.map((item: any) => (
+                              item.submenu ? (
+                                <div key={item.name}>
+                                  <div className="flex items-center justify-between py-3 px-10 text-gray-600 font-medium border-l-2 border-transparent">
+                                    <span>{item.name}</span>
+                                    <ChevronRight className="w-4 h-4 text-sky-500" />
+                                  </div>
+                                  <div className="pl-14 pr-4 pb-2">
+                                    {item.submenu.map((subItem: any) => (
+                                      <button
+                                        key={subItem.name}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleNavigation(subItem.href);
+                                        }}
+                                        className="block w-full text-left py-2 text-gray-500 hover:text-sky-600 text-sm"
+                                      >
+                                        <div className="flex items-center gap-2">
+                                          <ChevronRight className="w-3 h-3 text-sky-500" />
+                                          <span>{subItem.name}</span>
+                                        </div>
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
+                              ) : (
+                                <button
+                                  key={item.name}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleNavigation(item.href);
+                                  }}
+                                  className="block w-full text-left py-3 px-10 text-gray-600 hover:text-sky-600 border-l-2 border-transparent hover:border-sky-500"
+                                >
+                                  <span>{item.name}</span>
+                                </button>
+                              )
                             ))}
                           </div>
                         )}
