@@ -177,7 +177,7 @@ const Header = () => {
               <Instagram className="w-4 h-4" />
             </a>
             <a 
-              href="https://linkedin.com/company/ximax" 
+              href="https://www.linkedin.com/company/ximax-automation" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-white hover:text-[#4fc3f7] transition-colors"

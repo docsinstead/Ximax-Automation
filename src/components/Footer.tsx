@@ -64,7 +64,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: <Facebook className="w-5 h-5" />, url: 'https://facebook.com/ximax', label: 'Facebook' },
     { icon: <Twitter className="w-5 h-5" />, url: 'https://twitter.com/ximax', label: 'Twitter' },
-    { icon: <Linkedin className="w-5 h-5" />, url: 'https://linkedin.com/company/ximax', label: 'LinkedIn' },
+    { icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/company/ximax-automation', label: 'LinkedIn' },
     { icon: <Instagram className="w-5 h-5" />, url: 'https://instagram.com/ximax', label: 'Instagram' },
     { icon: <Youtube className="w-5 h-5" />, url: 'https://youtube.com/ximax', label: 'YouTube' },
     { icon: <WhatsAppIcon size={20} />, url: 'https://wa.me/918095067567', label: 'WhatsApp' }
