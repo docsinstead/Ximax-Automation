@@ -154,10 +154,9 @@ const ContactPage: React.FC = () => {
                   Phone
                 </h4>
                 <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  +1 (555) 123-4567
-                </p>
-                <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  +1 (555) 987-6543
+                  <a href="tel:+9195067567" className="hover:text-[#38B2FF] transition-colors">
+                    +91 (080) 95067567
+                  </a>
                 </p>
                 <p className="text-gray-500 text-xs mt-2">
                   Mon-Fri 9am-6pm
@@ -173,14 +172,10 @@ const ContactPage: React.FC = () => {
                   Email
                 </h4>
                 <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  info@ximax.com
+                  <a href="mailto:info@xaimax.net" className="hover:text-[#38B2FF] transition-colors">
+                    info@xaimax.net
+                  </a>
                 </p>
-                <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  support@ximax.com
-                </p>
-                {/* <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  sales@ximax.com
-                </p> */}
               </div>
 
               {/* Address Card */}
@@ -192,13 +187,13 @@ const ContactPage: React.FC = () => {
                   Address
                 </h4>
                 <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  123 Business Avenue
+                  Mantri Commercio, Tower A, 5th Floor
                 </p>
                 <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  London, UK EC1A 1BB
+                  Devara Vishanvli Road, Devarabisanahalli
                 </p>
                 <p className="text-gray-600 text-xs md:text-sm leading-relaxed">
-                  United Kingdom
+                  Bellandur ORR, Bengaluru, Karnataka - 560103
                 </p>
               </div>
             </div>
@@ -417,7 +412,7 @@ const ContactPage: React.FC = () => {
                 <div className="h-full flex items-stretch">
                   <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-200 w-full h-[400px]">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.546437152857!2d-0.106743684230242!3d51.51411791769746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034add2a4013%3A0x260ae6ac3d43b7e3!2sLondon%2C%20UK!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2648300538965!2d77.67328731482216!3d12.992697690839087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16d57a8cfd2f%3A0x8d0c5b2d5b2d5b2d!2sBellandur%20ORR%2C%20Bengaluru%2C%20Karnataka%20560103!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
                       width="100%"
                       height="100%"
                       style={{ border: 0, minHeight: '400px' }}

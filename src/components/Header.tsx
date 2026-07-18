@@ -1,7 +1,7 @@
 // components/Header.tsx
 import { useState, useEffect, useRef } from 'react';
-import {  useNavigate } from 'react-router-dom';
-import { Menu, X, Mail, Phone, Linkedin, ChevronDown, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, X, Mail, Phone, Linkedin, ChevronDown, ChevronRight, Facebook, Instagram, Youtube } from 'lucide-react';
 
 // WhatsApp Icon Component
 const WhatsAppIcon = ({ size = 20 }: { size?: number }) => (
@@ -18,6 +18,7 @@ const WhatsAppIcon = ({ size = 20 }: { size?: number }) => (
 
 const Header = () => {
   const navigate = useNavigate();
+  // const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoverDropdown, setHoverDropdown] = useState<string | null>(null);
@@ -138,9 +139,76 @@ const Header = () => {
   const currentDropdown = hoverDropdown || activeDropdown;
 
   return (
-    <>
-      {/* Desktop Header */}
-      <header className="hidden lg:block fixed top-0 w-full z-50 bg-white shadow-md">
+    <div className="fixed top-0 left-0 right-0 w-full z-50">
+      {/* Small Top Header - Always visible */}
+      <div className="hidden lg:block bg-[#0f2b4d] text-white text-xs px-6 py-2.5 w-full">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-white">
+              <Phone className="w-3.5 h-3.5 text-[#4fc3f7]" />
+              <a href="tel:+9195067567" className="text-white hover:text-[#4fc3f7] transition-colors">
+                +91 8095067567
+              </a>
+            </div>
+            <div className="flex items-center gap-2 text-white">
+              <Mail className="w-3.5 h-3.5 text-[#4fc3f7]" />
+              <a href="mailto:info@xaimax.net" className="text-white hover:text-[#4fc3f7] transition-colors">
+                info@xaimax.net
+              </a>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <a 
+              href="https://facebook.com/ximax" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#4fc3f7] transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a 
+              href="https://instagram.com/ximax" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#4fc3f7] transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a 
+              href="https://linkedin.com/company/ximax" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#4fc3f7] transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a 
+              href="https://youtube.com/ximax" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#4fc3f7] transition-colors"
+              aria-label="YouTube"
+            >
+              <Youtube className="w-4 h-4" />
+            </a>
+            <a 
+              href="https://wa.me/918095067567" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white hover:text-[#4fc3f7] transition-colors"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppIcon size={16} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Main Header */}
+      <header className="hidden lg:block w-full bg-white shadow-md" style={{ top: '36px' }}>
         <div className="bg-white py-3 px-6">
           <div className="max-w-7xl mx-auto flex items-center h-10">
             <div className="flex items-center">
@@ -214,28 +282,21 @@ const Header = () => {
                 </div>
               ))}
             </nav>
-
-            <div className="flex items-center space-x-4">
-              <button onClick={() => window.location.href = 'mailto:info@ximax.com'} className="text-gray-600 hover:text-sky-600"><Mail size={20} /></button>
-              <button onClick={() => window.location.href = 'tel:+12345678900'} className="text-gray-600 hover:text-sky-600"><Phone size={20} /></button>
-              <a href="https://wa.me/12345678900" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-green-600"><WhatsAppIcon size={20} /></a>
-              <a href="https://linkedin.com/company/ximax" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-sky-600"><Linkedin size={20} /></a>
-            </div>
           </div>
         </div>
       </header>
 
       {/* Mobile & Tablet Header */}
-      <header className="lg:hidden fixed top-0 w-full z-50" ref={mobileMenuRef}>
-        <div className="bg-white shadow-md py-2 px-4">
+      <header className="lg:hidden w-full bg-white shadow-md" ref={mobileMenuRef}>
+        <div className="bg-white py-2 px-4">
           <div className="flex justify-between items-center h-10">
             <button onClick={() => handleNavigation('/')}>
               <img src="/ximax-logo1.png" alt="Ximax Logo" className="h-8 w-auto" />
             </button>
 
             <div className="flex items-center space-x-3">
-              <button onClick={() => window.location.href = 'mailto:info@ximax.com'} className="text-gray-600"><Mail size={18} /></button>
-              <button onClick={() => window.location.href = 'tel:+12345678900'} className="text-gray-600"><Phone size={18} /></button>
+              <button onClick={() => window.location.href = 'mailto:info@xaimax.net'} className="text-gray-600"><Mail size={18} /></button>
+              <button onClick={() => window.location.href = 'tel:+9195067567'} className="text-gray-600"><Phone size={18} /></button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -326,7 +387,7 @@ const Header = () => {
           </div>
         )}
       </header>
-    </>
+    </div>
   );
 };
 
